@@ -1,18 +1,22 @@
-<div>
-<!-- Surrounding DIV for sfField builder to add a sfField directive to. -->
-
-  <h2>{{form.myOwnFormOption}}</h2>
-  <!-- Create your own form options -->
-
+<div class="form-group">
   <label>{{form.title}}</label>
-  
-  <update-on-blur sf-field-model schema-validate="form"></update-on-blur>
-  <em>Blur this field to update the model.</em>
-  
-  <!-- sf-field-model let's the ngModel builder know that you want a ng-model that matches against the form key here -->
-  <!-- schema-validate="form" validates the form against the schema -->
+  <div ng-class="{'input-group': (form.fieldAddonLeft || form.fieldAddonRight)}">
+    <span ng-if="form.fieldAddonLeft"
+          class="input-group-addon"
+          ng-bind-html="form.fieldAddonLeft"></span>
+    <input name='tel'
+           class="form-control"
+           sf-field-model
+           ng-intl-tel-input
+           schema-validate="form"
+           type="tel"
+           data-selected-country="form.telCountry"
+           data-initial-country="us" />
+    </input>
+    <span ng-if="form.fieldAddonLeft"
+          class="input-group-addon"
+          ng-bind-html="form.fieldAddonLeft"></span>
+  </div>
 
-  <span sf-message="form.description"></span>
-  <!-- Description & Validation messages -->
-
+  <span class="help-block" sf-message>{{ (hasError() && errorMessage(schemaError())) || form.description}}</span>
 </div>

@@ -25,5 +25,8 @@
     "angular-schema-form": "^0.8.13",
     "angular-schema-form-bootstrap": "^0.2.0",
     "bootstrap": "^3.3.7"
+  },
+  "dependencies": {
+    "ng-intl-tel-input": "^2.0.0"
   }
 }
