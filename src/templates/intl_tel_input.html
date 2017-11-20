@@ -1,23 +1,18 @@
-<div class="form-group">
-  <label>{{form.title}}</label>
-  <div ng-class="{'input-group': (form.fieldAddonLeft || form.fieldAddonRight)}">
-    <span ng-if="form.fieldAddonLeft"
-          class="input-group-addon"
-          ng-bind-html="form.fieldAddonLeft"></span>
-    <input name='tel'
-           class="form-control"
-           sf-field-model
-           ng-intl-tel-input
-           ng-model='form.phone'
-           schema-validate="form"
-           type="tel"
-           data-selected-country="form.telCountry"
-           data-initial-country="us" />
-    </input>
-    <span ng-if="form.fieldAddonLeft"
-          class="input-group-addon"
-          ng-bind-html="form.fieldAddonLeft"></span>
-  </div>
+<div class="form-group {{form.htmlClass}} schema-form-intl-tel-input"
+     ng-class="{'has-error': form.disableErrorState !== true && hasError(), 'has-success': form.disableSuccessState !== true && hasSuccess(), 'has-feedback': form.feedback !== false, 'required': form.required === true}">
+  <label class="control-label" ng-show="showTitle()">{{form.title}}</label>
+  <input name="{{form.key.slice(-1)[0]}}"
+         class="form-control {{form.fieldHtmlClass}}"
+         sf-field-model
+         ng-intl-tel-input
+         ng-model="$$value$$"
+         schema-validate="form"
+         type="tel"
+         data-selected-country="form.telCountry"
+         data-initial-country="us"
+         sf-changed="form"
+         ng-disabled="form.readonly">
+  </input>
 
-  <span class="help-block" sf-message>{{ (hasError() && errorMessage(schemaError())) || form.description}}</span>
+  <div class="help-block" sf-message="form.description"></div>
 </div>
