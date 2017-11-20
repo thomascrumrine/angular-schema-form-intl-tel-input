@@ -4,7 +4,7 @@ angular.module('intlTelInput', ['schemaForm', 'templates', 'ngIntlTelInput']).co
 
     schemaFormDecoratorsProvider.defineAddOn(
       'bootstrapDecorator',
-      'intl_tel_input',
+      'intl-tel-input',
       'src/templates/intl_tel_input.html',
       sfBuilderProvider.stdBuilders
     )
