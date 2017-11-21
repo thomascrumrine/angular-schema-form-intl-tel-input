@@ -14,5 +14,10 @@
          ng-disabled="form.readonly">
   </input>
 
+  <span ng-if="form.feedback !== false"
+        class="form-control-feedback"
+        ng-class="evalInScope(form.feedback) || {'glyphicon': true, 'glyphicon-ok': form.disableSuccessState !== true && hasSuccess(), 'glyphicon-remove': form.disableErrorState !== true && hasError() }"
+        aria-hidden="true">
+  </span>
   <div class="help-block" sf-message="form.description"></div>
 </div>
